@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Fintalk Tester",
+    "version": "1.0",
+    "description": "Envia prompts automaticamente ao ser clicado",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "Fintalk.png",
+            "48": "Fintalk.png",
+            "128": "Fintalk.png"
+        }
+    }
+}

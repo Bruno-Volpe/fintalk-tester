@@ -1,0 +1,110 @@
+html {
+    height: 600px;
+    width: 400px;
+    overflow-y: auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #2e2e2e; /* Cinza escuro, semelhante a cimento queimado */
+    color: #f0f0f0; /* Cinza claro para o texto */
+}
+
+.container {
+    padding: 20px;
+}
+
+button {
+    background-color: #f3537e; /* Amarelo escuro */
+    color: #2e2e2e;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    border: 2px solid #f3537e; /* Amarelo escuro */
+    color: #f3537e;
+    background-color: transparent;
+}
+
+#wordInput {
+    width: 300px;
+    border-radius: 5px;
+    border-radius: 3px;
+    border: 2px solid #f3537e; /* Amarelo escuro */
+    background-color: transparent;
+    color: #f0f0f0; /* Cinza claro para o texto */
+}
+
+#wordList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.word-item {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #444;
+    width: 300px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.word-item:hover {
+    background-color: #555; /* Escurece um pouco a cor de fundo */
+}
+
+.word-item button {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+#delete {
+    cursor: pointer;
+}
+
+.word-input {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    border-radius: 3px;
+    border: 2px solid #f3537e; /* Amarelo escuro */
+    background-color: transparent;
+    color: #f0f0f0; /* Cinza claro para o texto */
+}
+
+input[type="text"]:focus {
+    border: 2px solid #f3537e; /* Amarelo escuro */
+    background-color: transparent;
+    color: #f0f0f0;
+}
+
+.send-button-div {
+    width: 100%;
+}
+
+#sendWord {
+    cursor: pointer;
+}
+
+#sendWordButton {
+    width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6%px;
+}
