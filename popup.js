@@ -20,15 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('test').addEventListener('click', async () => {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        for (const text of words) {
-            await new Promise(resolve => {
-                chrome.scripting.executeScript({
-                    target: { tabId: tab.id },
-                    func: insertAndSend,
-                    args: [text]
-                }, resolve);
-            });
-            await new Promise(resolve => setTimeout(resolve, 3000)); // Espera 2 segundos antes de enviar a próxima palavra
+        while (true) {
+            for (const text of words) {
+                await new Promise(resolve => {
+                    chrome.scripting.executeScript({
+                        target: { tabId: tab.id },
+                        func: insertAndSend,
+                        args: [text]
+                    }, resolve);
+                });
+                await new Promise(resolve => setTimeout(resolve, 3000)); // Espera 2 segundos antes de enviar a próxima palavra
+            }
         }
     });
 
