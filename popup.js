@@ -110,45 +110,18 @@ function loadWords() {
 }
 
 function insertAndSend(text) {
-    return new Promise((resolve) => {
-        function typeText(input, text, callBackFn) {
-            let index = 0;
+    const mainEl = document.querySelector('#main')
+    const textareaEl = mainEl.querySelector('div[contenteditable="true"]')
 
-            function typeNextCharacter() {
-                if (index < text.length) {
-                    const char = text[index];
-                    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-                    nativeInputValueSetter.call(input, input.value + char);
+    if (!textareaEl) {
+        throw new Error('There is no opened conversation')
+    }
 
-                    const keyDownEvent = new KeyboardEvent('keydown', { key: char, bubbles: true });
-                    const keyPressEvent = new KeyboardEvent('keypress', { key: char, bubbles: true });
-                    const inputEvent = new Event('input', { bubbles: true });
-                    const keyUpEvent = new KeyboardEvent('keyup', { key: char, bubbles: true });
+    textareaEl.focus()
+    document.execCommand('insertText', false, text)
+    textareaEl.dispatchEvent(new Event('change', { bubbles: true }))
 
-                    input.dispatchEvent(keyDownEvent);
-                    input.dispatchEvent(keyPressEvent);
-                    input.dispatchEvent(inputEvent);
-                    input.dispatchEvent(keyUpEvent);
-
-                    index++;
-                    setTimeout(typeNextCharacter, 100); // Ajuste o intervalo de tempo conforme necessário
-                } else {
-                    callBackFn();
-                }
-            }
-
-            typeNextCharacter();
-        }
-
-        const input = document.querySelector("#root > div.appcontainer > div.footer-bar > form > div.conversation-container > input");
-        if (input) {
-            typeText(input, text, () => {
-                const sendButton = document.querySelector("#root > div.appcontainer > div.footer-bar > form > button > div");
-                if (sendButton) {
-                    sendButton.click();
-                    resolve();
-                }
-            });
-        }
-    });
+    setTimeout(() => {
+        (mainEl.querySelector('[data-testid="send"]') || mainEl.querySelector('[data-icon="send"]')).click()
+    }, 100)
 }
